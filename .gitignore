@@ -1,0 +1,15 @@
+.DS_Store
+.vscode/
+.idea/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# your explicit notebook ignores
+notebooks/data_prepare.ipynb
+notebooks/data_prepare_tox.ipynb
