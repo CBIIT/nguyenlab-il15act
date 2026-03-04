@@ -1,0 +1,12 @@
+name: pymc_latest
+channels:
+  - conda-forge
+dependencies:
+  - pymc
+  - blackjax
+  - ca-certificates
+  - openssl
+  - jupyter
+  - scanpy
+  - certifi
+prefix: /data/kanferg/conda/envs/pymc_latest

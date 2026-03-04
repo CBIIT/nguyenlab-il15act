@@ -1,0 +1,12 @@
+name: stlearn-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - stlearn
+  - ca-certificates
+  - openssl
+  - jupyter
+  - certifi
+  - cupy
+prefix: /data/kanferg/conda/envs/stlearn-env
