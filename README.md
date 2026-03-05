@@ -1,5 +1,9 @@
 # nguyenlab-il15act
 
+[![Docs](https://img.shields.io/badge/docs-online-blue)](https://cbiit.github.io/nguyenlab-il15act/)
+
+**Documentation website:** https://cbiit.github.io/nguyenlab-il15act/
+
 ### nb_02_compostion_analysis.ipynb
 This notebook is part of the analysis workflow for **Rodriguez & Kanfer et al. (MS_v8)**, *“IL-21 preserves IL-15–driven CD8 T-cell anti-tumor responses and abrogates interferon-γ–mediated hemophagocytosis and hyperinflammation.”
 
@@ -73,3 +77,7 @@ After downloading, place the Zenodo files in a local data directory (recommended
 | `nb_07_toxicology_compostion_analysis.ipynb` | `01_processed_anndata/tox_cytokines_andata.h5ad` |
 | `nb_08_tcell_signature_gene_analysis.ipynb` | `02_tables_inputs/skin_tcell_long_counts.csv` • `06_models/possion_dge/trace_cd8subsets_day4.pkl` |
 
+## Documentation
+
+Project documentation and rendered notebooks are available at:  
+https://cbiit.github.io/nguyenlab-il15act/
