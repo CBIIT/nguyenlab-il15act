@@ -1,7 +1,5 @@
 # nguyenlab-il15act
 
-
-
 ## Environments (mamba/conda)
 
 This project uses multiple conda environments because some notebooks require incompatible package stacks
@@ -23,6 +21,7 @@ mamba env create -f envs/env_stlearn.min.yml
 # spatialdata / spatial ecosystem workflows
 mamba env create -f envs/env_spatialdata.min.yml
 ```
+
 ## Data availability (Zenodo)
 
 Large input files required to reproduce the notebook analyses (e.g., processed AnnData objects and other intermediate analysis inputs) are hosted on Zenodo in two uploads:
@@ -33,4 +32,41 @@ Large input files required to reproduce the notebook analyses (e.g., processed A
 These Zenodo uploads provide the processed datasets needed to run the notebooks end-to-end, including the precomputed inputs used across the pipeline (e.g., the Xenium-derived AnnData used for QC/composition analyses, and analysis-ready tables used by downstream modeling steps such as region composition/scCODA, collagen distance modeling, and ligand–receptor analysis). The repository itself only tracks small, analysis-ready tables under `data/` (CSV inputs and summary tables), while the larger objects are downloaded from Zenodo.
 
 After downloading, place the Zenodo files in a local data directory (recommended: `data_external/` at the repo root) and update the path variables at the top of each notebook to point to your local file locations.
+
+---
+
+## Notebooks ↔ manuscript (MS_v8) figures / outputs
+
+> This table links each notebook to the main outputs used for the manuscript figures (and/or the figure files produced by the notebook).
+> When figure panel IDs change during revision, update the “Manuscript figure(s)” column accordingly.
+
+| Notebook | What it does | Manuscript figure(s) / key outputs (files) |
+|---|---|---|
+| `nb_01_qc_cell_transcript_filtering.ipynb` | QC summaries, library depth by condition, and technical replicate concordance; generates the labeled cell-type UMAP used throughout downstream analyses. | QC summary table: `Supplementary_Table_QC_summary_publication.csv` • Library depth boxplot: `library_depth_by_condition.pdf` • Tech replicate concordance: `qc_techrep_correlation_condition_day.pdf` • Cell-type UMAP legend: `umap_celltype_numbered.pdf` |
+| `nb_02_compostion_analysis.ipynb` | Global (whole-slide) immune/stromal composition comparisons across conditions and timepoints. | Stacked composition plots: `stacked_celltype_day4.pdf`, `stacked_celltype_day8.pdf` |
+| `nb_03_tumor_regions_compostion_analysis.ipynb` | Core vs border tumor-region composition analysis using scCODA inputs. | Region composition/scCODA outputs used for core–border comparisons (update panel IDs as needed). |
+| `nb_04_ligand_receptor_analysis.ipynb` | Post-processing of ligand–receptor (LR) interaction scores; filters/ranks interactions for reporting. | LR summary tables used for manuscript figures/tables: `all_lr_interactions_scores.csv`, `ligand_receptor_analysis_top50.csv` |
+| `nb_05_Collagen_distance_bayes_model.ipynb` | Bayesian modeling of collagen-distance / border–core contrasts and associated diagnostics. | Model summary + diagnostics: `model6_delta_ck_summary.csv`, `model_comparison_loo.csv`, and diagnostic PDFs (`fig_ppc_model6.pdf`, `fig_trace_diagnostics.pdf`, etc.) |
+| `nb_06_xenium_codex_alignment.ipynb` | Xenium–CODEX alignment via interactive Napari landmark registration; produces aligned SpatialData objects for downstream spatial analyses/figures. | Alignment outputs: corrected/registered `.zarr` objects (e.g., `05_spatialdata_zarr/slide_1_correction.zarr/`) |
+| `nb_07_toxicology_compostion_analysis.ipynb` | Tissue-wise immune composition + severity association analyses for toxicology. | Severity correlation table used in tox figures: `toxicology_severity_correlation_all_tissues.csv` |
+| `nb_08_tcell_signature_gene_analysis.ipynb` | T-cell signature / IFN-γ axis analysis (Poisson DGE posterior summaries; CD8 subset modeling). | (Notebook header notes “related to Fig 4g”) • Posterior lnFC table: `fig4g_ifng_ifngr1_posterior_lnFC.csv` |
+
+---
+
+## Notebooks ↔ dataset files (Zenodo)
+
+> Relative paths below assume the Zenodo bundle is unpacked into `data_external/nguyenlab-il15act-dataset-v1/`.
+> Both Zenodo uploads contain the large objects needed to run the pipeline end-to-end:
+> https://zenodo.org/uploads/18838969 and https://zenodo.org/uploads/18842625.
+
+| Notebook | Primary inputs from Zenodo bundle (relative paths) |
+|---|---|
+| `nb_01_qc_cell_transcript_filtering.ipynb` | `01_processed_anndata/mel_cytokines_andata.h5ad` • `00_metadata/` (metadata notes) |
+| `nb_02_compostion_analysis.ipynb` | `01_processed_anndata/mel_cytokines_andata.h5ad` |
+| `nb_03_tumor_regions_compostion_analysis.ipynb` | `02_tables_inputs/sccoda_tumor_regions_input.csv` |
+| `nb_04_ligand_receptor_analysis.ipynb` | `03_lr_outputs/all_lr_interactions_scores.csv` |
+| `nb_05_Collagen_distance_bayes_model.ipynb` | `02_tables_inputs/colga_distance_input_table.csv` |
+| `nb_06_xenium_codex_alignment.ipynb` | `04_codex_slide1/` (Xenium/CODEX exports; TIFF/QPTIFF-derived tables) • `05_spatialdata_zarr/` (raw + corrected `.zarr` objects) |
+| `nb_07_toxicology_compostion_analysis.ipynb` | `01_processed_anndata/tox_cytokines_andata.h5ad` |
+| `nb_08_tcell_signature_gene_analysis.ipynb` | `02_tables_inputs/skin_tcell_long_counts.csv` • `06_models/possion_dge/trace_cd8subsets_day4.pkl` |
 
