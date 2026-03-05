@@ -1,0 +1,23 @@
+site_name: nguyenlab-il15act
+site_description: Analysis workflow documentation
+docs_dir: docs
+theme:
+  name: material
+
+plugins:
+  - search
+  - mkdocs-jupyter:
+      execute: false
+
+nav:
+  - Home: index.md
+  - Notebooks and outputs: notebooks.md
+  - Zenodo inputs: zenodo-inputs.md
+  - Notebook 01 QC cell transcript filtering: notebooks/nb_01_qc_cell_transcript_filtering.ipynb
+  - Notebook 02 composition analysis: notebooks/nb_02_compostion_analysis.ipynb
+  - Notebook 03 tumor regions composition analysis: notebooks/nb_03_tumor_regions_compostion_analysis.ipynb
+  - Notebook 04 ligand receptor analysis: notebooks/nb_04_ligand_receptor_analysis.ipynb
+  - Notebook 05 collagen distance bayes model: notebooks/nb_05_Collagen_distance_bayes_model.ipynb
+  - Notebook 06 xenium codex alignment: notebooks/nb_06_xenium_codex_alignment.ipynb
+  - Notebook 07 toxicology composition analysis: notebooks/nb_07_toxicology_compostion_analysis.ipynb
+  - Notebook 08 tcell signature gene analysis: notebooks/nb_08_tcell_signature_gene_analysis.ipynb

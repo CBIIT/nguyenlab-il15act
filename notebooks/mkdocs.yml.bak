@@ -1,0 +1,9 @@
+site_name: nguyenlab-il15act
+site_description: Analysis workflow documentation
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Notebooks and outputs: notebooks.md
+  - Zenodo inputs: zenodo-inputs.md
